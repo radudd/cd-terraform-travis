@@ -2,6 +2,10 @@
 # Deploy App to Dokku
 
 export DOKKU_HOST=${DOKKU_HOST:-`cd terraform && terraform output public_dns`}
+
+# Remote AWS keys. They are not necesarry anymore
+rm -rf ~/.aws
+
 if [[ -n $DOKKU_HOST ]]; then
     ssh-keyscan ${DOKKU_HOST} >> ~/.ssh/known_hosts
     git remote add dokku dokku@${DOKKU_HOST}:${APP_NAME}
@@ -11,3 +15,4 @@ if [[ -n $DOKKU_HOST ]]; then
   else echo "[ERROR] Dokku host not defined..."
     exit 99
 fi
+

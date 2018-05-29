@@ -1,18 +1,18 @@
-## Build a CD Pipeline with TravisCI, Dokku, AWS and Terraform (for a Node.js application)
+# Build a CD Pipeline with TravisCI, Dokku, AWS and Terraform (for a Node.js application)
 
 There are basically two approches: complete automated deployment(including infrastructure creation with Terraform) and separate infrastructure and application deployments.
 
-# Use cases
+## Use cases
 - Complete automated deployment: Dynamic infrastructure which runs on demand. Travis CI will check and deploy the required infrastructure with Terraform (if not already present). After it will deploy the application to Dokku using a Dockerfile
 - Separate deployments for infrastructure and application: Infrastructure is static and doesn't need to be often redeployed. In this case, infrastructure will be deployed at the beginning of the process with Terraform and the CD pipeline will contain just the application deployment to Dokku as a Dockerfile
 
-# Requirements
+## Requirements
 - Travis CLI https://github.com/travis-ci/travis.rb
 
 *(Only if using static infrastructure and Terraform is used to deploy it initially)*
 - Terraform https://releases.hashicorp.com/terraform
 
-# Create and encrypt your access keys
+## Create and encrypt your access keys
 After checking out the repository, you need to create a tarball containing both your AWS access keys and your ssh-keypair. Copy your ~/.aws folder to the checked out repo and generate a new ssh-keypair
 ```shell
 cp -pR ~/.aws .
@@ -30,10 +30,10 @@ travis encrypt-file aws.tar --add
 This will encrypt aws.tar file (generating aws.tar.enc file) with a symmetric encryption using a key kept secure in your Travis account.
 Now you can safely delete the .aws, .ssh folders and aws.tar file. Anyway, if you still want to use Terraform locally, don't delete the .ssh folder. It will not be commited to remote repository since is specified in .gitignore.
 
-# Authorize your public ssh key to your GitHub account
+## Authorize your public ssh key to your GitHub account
 Terraform will require write access to the remote repo to push the tfstate files. We will use the same ssh key as for the Dokku server and application. https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 
-# Update .travis.yml
+## Update .travis.yml
 Another thing which needs to be done is to update the environemnt variables from  *(.travis.yml)* file
 ```
   - APP_NAME="sample-node-app"    							# The name that Dokku will use for your application
@@ -44,7 +44,7 @@ Another thing which needs to be done is to update the environemnt variables from
   															# infrastructure. Otherwise, define your static EC2 instance here and TravisCI will skip Terraform deployment 
 ```
 
-# Ready to test
+## Ready to test
 That's all, now commit your changes and push them to your repository. 
 Dont't forget that if you want to run Terraform locally you'll need to have the ssh keys in the .ssh folder in repository home and to export the TF_VAR_app_port variable
 

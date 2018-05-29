@@ -19,7 +19,9 @@ Compress them in a tarball
 ```shell
 tar cvf aws.tar .aws .ssh
 ```
-Encrypt them using Travis CLI
+Remove the openssl command from before_install phase from .travis.yml file
+
+Encrypt them using Travis CLI. This will add a new openssl decryption command
 ```shell
 travis login    # Your GitHub credentials
 travis encrypt-file aws.tar --add

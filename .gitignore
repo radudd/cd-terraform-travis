@@ -1,4 +1,4 @@
 .aws
 .ssh
-.aws.tar
+aws.tar
 terraform/.terraform

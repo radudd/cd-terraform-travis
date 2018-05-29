@@ -11,7 +11,7 @@ env:
   # Git username to be used by the commits from Travis CI build servers
   - GIT_USERNAME="Travis CI"
   # Your own GitHub repository for which you want to achieve CD
-  - GIT_REPO="git@github.com:radudd/travis-cd"
+  - GIT_REPO="git@github.com:radudd/cd-terraform-travisci"
   # This is important. Keep this variable undefined, if you want TravisCI to run Terraform to deploy your infrastructure. Otherwise, define your static EC2 instance here and TravisCI will skip Terraform deployment
   - DOKKU_HOST=""
 

@@ -12,8 +12,6 @@ env:
 before_install:
 - openssl aes-256-cbc -K $encrypted_27784912e80e_key -iv $encrypted_27784912e80e_iv
   -in aws.tar.enc -out aws.tar -d
-- openssl aes-256-cbc -K $encrypted_cfaf2b433683_key -iv $encrypted_cfaf2b433683_iv
-  -in aws.tar.enc -out aws.tar -d
 - tar xvf aws.tar && mv -f .aws ~/ && rm -f aws.tar
 - eval "$(ssh-agent -s)"
 - ssh-add .ssh/aws_terraform

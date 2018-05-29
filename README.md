@@ -9,8 +9,7 @@ There are basically two approches: complete automated deployment(including infra
 ## Requirements
 - Travis CLI https://github.com/travis-ci/travis.rb
 
-*(Only if using static infrastructure and Terraform is used to deploy it initially)*
-- Terraform https://releases.hashicorp.com/terraform
+- Terraform https://releases.hashicorp.com/terraform *(Only if using static infrastructure and Terraform is used to deploy it initially)*
 
 ## Create and encrypt your access keys
 After checking out the repository, you need to create a tarball containing both your AWS access keys and your ssh-keypair. Copy your ~/.aws folder to the checked out repo and generate a new ssh-keypair

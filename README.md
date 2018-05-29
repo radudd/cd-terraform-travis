@@ -1,4 +1,4 @@
-https://travis-ci.org/radudd/cd-terraform-travisci.svg?branch=master
+[![Build Status](https://travis-ci.org/radudd/cd-terraform-travisci.svg?branch=master)](https://travis-ci.org/radudd/cd-terraform-travisci)
 # Build a CD Pipeline with TravisCI, Dokku, AWS and Terraform (for a Node.js application)
 
 There are two approches: 

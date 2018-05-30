@@ -34,12 +34,6 @@ resource "aws_security_group" "dokku_sg" {
     cidr_blocks = "${var.cidr_blocks}"
   }
   ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = "${var.cidr_blocks}"
-  }
-  ingress {
     from_port = "${var.app_port}"
     to_port = "${var.app_port}"
     protocol = "tcp"

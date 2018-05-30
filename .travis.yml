@@ -26,3 +26,6 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+# Remote AWS access keys and ssh keypair. They are not necesarry anymore
+after_deploy:
+- rm -rf ~/.aws .ssh
